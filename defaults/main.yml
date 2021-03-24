@@ -6,6 +6,11 @@
 apt_keys: |
   {{
     {
+      'Debian_9': [
+        apt_keys_debian.stretch_stable,
+        apt_keys_debian.stretch_security_automatic,
+        apt_keys_debian.stretch_automatic
+      ],
       'Debian_10': [
         apt_keys_debian.buster_stable,
         apt_keys_debian.buster_security_automatic,
@@ -29,8 +34,23 @@ apt_keys: |
   }}
 
 apt_keys_debian:
+# Debian 9:  https://packages.debian.org/stretch/debian-archive-keyring
 # Debian 10: https://packages.debian.org/buster/debian-archive-keyring
 # Debian 11: https://packages.debian.org/bullseye/debian-archive-keyring
+  stretch_stable:
+    id: EF0F382A1A7B6500
+    url: https://ftp-master.debian.org/keys/release-9.asc
+    keyring: /etc/apt/trusted.gpg.d/debian-archive-stretch-stable.gpg
+
+  stretch_security_automatic:
+    id: EDA0D2388AE22BA9
+    url: https://ftp-master.debian.org/keys/archive-key-9-security.asc
+    keyring: /etc/apt/trusted.gpg.d/debian-archive-stretch-security-automatic.gpg
+
+  stretch_automatic:
+    id: E0B11894F66AEC98
+    url: https://ftp-master.debian.org/keys/archive-key-9.asc
+    keyring: /etc/apt/trusted.gpg.d/debian-archive-stretch-automatic.gpg
 
   buster_stable:
     id: DCC9EFBF77E11517
